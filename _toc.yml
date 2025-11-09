@@ -1,0 +1,18 @@
+# Table of Contents for AI Course Book
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+  - file: chap1_myst
+    title: Introduction to AI
+  - file: chap2_myst
+    title: Important Concepts
+  - file: chap3_myst
+    title: Searching State Spaces
+  - file: chap4_myst
+    title: Multiagent Search
+  - file: chap5_myst
+    title: Propositional Logic
+  - file: chap6_myst
+    title: First-Order Logic

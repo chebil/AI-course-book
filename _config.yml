@@ -1,0 +1,53 @@
+# Jupyter Book Configuration
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: AI Course Book
+author: Khalil Chebil
+logo: ''
+
+repository:
+  url: https://github.com/chebil/AI-course-book
+  path_to_book: ""
+  branch: main
+
+html:
+  favicon: ""
+  use_repository_button: true
+  use_issues_button: true
+  use_edit_button: true
+  home_page_in_navbar: true
+  baseurl: ""
+
+launch_buttons:
+  notebook_interface: "classic"
+  binderhub_url: ""
+
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - substitution
+    - tasklist
+  myst_url_schemes: [mailto, http, https]
+
+execute:
+  execute_notebooks: "off"
+  timeout: 300
+
+sphinx:
+  extra_extensions:
+    - 'sphinxcontrib.mermaid'
+  config:
+    html_theme: sphinx_book_theme
+    html_theme_options:
+      repository_url: https://github.com/chebil/AI-course-book
+      use_repository_button: true
+      use_issues_button: true
+      use_edit_button: true
