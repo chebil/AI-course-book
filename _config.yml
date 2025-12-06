@@ -1,0 +1,37 @@
+# Jupyter Book Configuration
+title: Artificial Intelligence - A Textbook
+author: Khalil Chebil
+logo: ''
+
+repository:
+  url: https://github.com/chebil/AI-course-book
+  path_to_book: ""
+  branch: main
+
+html:
+  favicon: ""
+  use_repository_button: true
+  use_issues_button: true
+  use_edit_button: true
+  home_page_in_navbar: true
+  baseurl: ""
+
+# Parse MyST markdown
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - substitution
+    - tasklist
+
+# Execution settings
+execute:
+  execute_notebooks: "off"
+  timeout: -1
