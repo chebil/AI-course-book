@@ -1,7 +1,7 @@
 # Jupyter Book Configuration
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: AI Course Book
+title: Artificial Intelligence - A Textbook
 author: Khalil Chebil
 logo: ''
 
@@ -17,11 +17,19 @@ html:
   use_edit_button: true
   home_page_in_navbar: true
   baseurl: ""
+  google_analytics_id: ""
+  comments:
+    hypothesis: false
+    utterances: false
 
+# Enable Jupyter notebook downloads
 launch_buttons:
-  notebook_interface: "classic"
-  binderhub_url: ""
+  notebook_interface: "jupyterlab"  # Use JupyterLab interface
+  binderhub_url: "https://mybinder.org"  # Use Binder for interactive notebooks
+  colab_url: "https://colab.research.google.com"  # Enable Google Colab
+  thebe: true  # Enable Thebe for live code execution
 
+# Parse MyST markdown
 parse:
   myst_enable_extensions:
     - amsmath
@@ -37,13 +45,24 @@ parse:
     - tasklist
   myst_url_schemes: [mailto, http, https]
 
+# Execution settings
 execute:
-  execute_notebooks: "off"
+  execute_notebooks: "auto"  # Execute notebooks automatically
   timeout: 300
+  allow_errors: false
+  stderr_output: "show"
+  exclude_patterns:
+    - "README.md"
+    - "SETUP.md"
+    - "QUICKSTART.md"
 
+# Sphinx configuration
 sphinx:
   extra_extensions:
     - 'sphinxcontrib.mermaid'
+    - 'sphinx_proof'
+    - 'sphinx_examples'
+    - 'sphinx_exercise'
   config:
     html_theme: sphinx_book_theme
     html_theme_options:
@@ -51,3 +70,17 @@ sphinx:
       use_repository_button: true
       use_issues_button: true
       use_edit_button: true
+      use_download_button: true
+      launch_buttons:
+        notebook_interface: jupyterlab
+        binderhub_url: "https://mybinder.org"
+        colab_url: "https://colab.research.google.com"
+    nb_output_stderr: "show"
+    html_show_copyright: false
+
+# Bibliography settings
+bibtex_bibfiles:
+  - references.bib
+
+# Only build specific files
+only_build_toc_files: true
