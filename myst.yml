@@ -2,10 +2,10 @@
 version: 1
 project:
   id: 3fdd09b7-9a79-4ea9-8355-87538f27d341
-  # title:
-  # description:
-  # keywords: []
-  # authors: []
+  title: Artificial Intelligence
+  authors:
+    - name: Dr. Khalil Chebil
+      email: khalil.chebil@insat.ucar.tn
   github: https://github.com/chebil/AI-course-book
   # To autogenerate a Table of Contents, run "myst init --write-toc"
   toc:
@@ -33,6 +33,8 @@ project:
     
 site:
   template: book-theme
-  # options:
+  title: Artificial Intelligence - A Textbook
+  options:
+    logo_text: Dr. Khalil Chebil
   #   favicon: favicon.ico
   #   logo: site_logo.png
