@@ -1,4 +1,4 @@
-# Artificial Intelligence: A Textbook
+# Artificial Intelligence
 
 **An Interactive Jupyter Book Companion**
 
@@ -68,22 +68,6 @@ This Jupyter Book provides several interactive features to enhance your learning
 4. **Practice** with the exercises at the end of each chapter
 5. **Download** notebooks for offline study and experimentation
 
-### For Instructors
-
-- All materials are open-source and can be adapted for your courses
-- Notebooks can be assigned as homework or lab exercises
-- Solutions can be found in the instructor's repository
-- Slides from [AI-slides](https://github.com/chebil/AI-slides) complement the content
-
-## Running the Code
-
-You have several options to run the code in this book:
-
-1. **Binder**: Click the 🚀 rocket icon at the top of any chapter and select "Binder"
-2. **Google Colab**: Click the 🚀 rocket icon and select "Colab"
-3. **Local Installation**: Download the notebook and run it locally with Jupyter
-4. **Live Code**: Use the "Live Code" button for in-browser execution
-
 ## Prerequisites
 
 This book assumes:
@@ -103,16 +87,3 @@ This interactive book is based on:
 - **Textbook**: "Artificial Intelligence: A Textbook" by Charu C. Aggarwal (Springer, 2021)
 - **Tools**: Built with Jupyter Book, MyST, and Sphinx
 - **Community**: Inspired by the open-source education movement
-
----
-
-```{admonition} Ready to Start?
-:class: tip
-Begin your AI journey with [Chapter 1: Introduction to Artificial Intelligence](chapters/ch01_introduction.ipynb)!
-```
-
-## License
-
-This educational material is provided for academic purposes. Please respect the copyright of the original textbook by Charu C. Aggarwal.
-
-**Happy Learning! 🤖📚**
