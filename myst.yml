@@ -18,7 +18,12 @@ project:
               title: Theory and Algorithms
             - file: chapters/ch02_search_implementation.ipynb
               title: Implementation and Applications
-        - file: chapters/ch03_multiagent.ipynb
+        - title: Chapter 3 - Multiagent Search
+          children:
+            - file: chapters/ch03_multiagent.ipynb
+              title: Theory and Algorithms
+            - file: chapters/ch03_multiagent_implementation.ipynb
+              title: Implementation and Applications
         - file: chapters/ch04_propositional.ipynb
         - file: chapters/ch05_firstorder.ipynb
     - title: Part II - Inductive Learning
