@@ -11,7 +11,12 @@ project:
     - file: intro.md
     - title: Part I - Deductive Reasoning
       children:
-        - file: chapters/ch01_introduction.ipynb
+        - title: Chapter 1 - Introduction to AI
+          children:
+            - file: chapters/ch01_introduction.ipynb
+              title: Theory and Concepts
+            - file: chapters/ch01_introduction_implementation.ipynb
+              title: Implementation and Examples
         - title: Chapter 2 - Searching State Spaces
           children:
             - file: chapters/ch02_search.ipynb
