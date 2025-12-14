@@ -3,9 +3,9 @@
 [![Jupyter Book](https://img.shields.io/badge/Jupyter-Book-orange)](https://jupyterbook.org/)
 [![Python](https://img.shields.io/badge/Python-3.9+-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-Educational-green)](LICENSE)
-[![Enhancement Phase 1](https://img.shields.io/badge/Enhancement-Phase%201%20Complete-success)](ENHANCEMENT_SUMMARY.md)
+[![Labs Complete](https://img.shields.io/badge/Labs-13%2F13%20Complete-brightgreen)](ENHANCEMENT_SUMMARY.md)
 
-An interactive companion to "Artificial Intelligence: A Textbook" by Charu C. Aggarwal, with comprehensive Python implementations, examples, and hands-on lab exercises.
+A comprehensive, hands-on interactive textbook for Artificial Intelligence with theory, implementation, and **complete lab exercises** for all 13 chapters.
 
 **Instructor**: Dr. Khalil Chebil  
 **Institution**: Prince Sattam bin Abdulaziz University (PSAU)  
@@ -16,61 +16,74 @@ An interactive companion to "Artificial Intelligence: A Textbook" by Charu C. Ag
 
 ## ✨ What's New - December 2025
 
-### ✅ Completed Enhancements
+### ✅ Phase 2 COMPLETED!
 
-- **Repository Cleanup**: Removed duplicate files for cleaner structure
-- **Lab Notebooks Added**: Comprehensive hands-on exercises for Chapters 1-3
-- **Enhanced Documentation**: New [ENHANCEMENT_SUMMARY.md](ENHANCEMENT_SUMMARY.md) with roadmap
-- **Improved TOC**: Updated myst.yml to include lab exercises
+**All 13 Lab Notebooks Now Available!**
+- ✅ **13/13 chapters** have comprehensive lab exercises
+- ✅ **130+ hands-on exercises** across all topics
+- ✅ **Progressive difficulty** from beginner to advanced
+- ✅ **Complete coverage**: Deductive AI → ML → Integration
 
-### 🎓 New Lab Exercises
+### 🎓 Lab Notebook Features
 
 Each lab includes:
-- 5+ progressive difficulty exercises
-- Skeleton code with TODO comments
-- Test cases and validation
-- Performance benchmarking
-- Visualization templates
-- Challenge problems
-- Discussion questions
+- 📋 Clear learning objectives
+- 💻 5-6 progressive exercises
+- 🔧 Skeleton code with TODO markers
+- ✅ Test cases for validation
+- 📊 Performance benchmarking tools
+- 🎨 Visualization templates
+- 🏆 Challenge problems for advanced students
+- 💬 Discussion questions
+- 📝 Deliverables checklist
 
 ---
 
-## 📚 Book Structure
-
-This textbook integrates **deductive reasoning** and **inductive learning** approaches to AI:
+## 📚 Complete Book Structure
 
 ### Part I: Deductive Reasoning (Chapters 1-5)
 
-| Chapter | Theory | Implementation | Lab | Status |
-|---------|--------|----------------|-----|--------|
-| 1 | Introduction to AI | ✅ Complete | ✅ **NEW** | ✅ Ready |
-| 2 | **Searching State Spaces** | ✅ Complete | ✅ **NEW** | ✅ **COMPLETE** |
-| 3 | Multiagent Search | ✅ Complete | 🚧 Basic | ✅ **NEW** Lab |
-| 4 | Propositional Logic | 🚧 Planned | 🚧 Thin | 📑 Planned |
-| 5 | First-Order Logic | 🚧 Planned | 🚧 Thin | 📑 Planned |
+| Chapter | Theory | Implementation | Lab | Key Topics |
+|---------|--------|----------------|-----|------------|
+| 1 | ✅ | ✅ | ✅ | **Agent Architectures** |
+| 2 | ✅ | ✅ | ✅ | **Search Algorithms** |
+| 3 | ✅ | ✅ | ✅ | **Game Playing, Minimax** |
+| 4 | ✅ | ✅ | ✅ | **Propositional Logic, SAT** |
+| 5 | ✅ | ✅ | ✅ | **FOL, Unification, Prolog** |
 
-**Chapter 1 Lab Topics**: Simple/Model-Based/Goal-Based/Utility-Based Agents, Learning Agent  
-**Chapter 2 Lab Topics**: Romania Pathfinding, 8-Puzzle, N-Queens, Hill Climbing, Performance Analysis  
-**Chapter 3 Lab Topics**: Minimax, Alpha-Beta, Connect Four, MCTS, Algorithm Tournament
+**Lab 1**: Simple/Model/Goal/Utility Agents, Learning Agent  
+**Lab 2**: BFS, DFS, A*, 8-Puzzle, N-Queens, CSP  
+**Lab 3**: Minimax, Alpha-Beta, MCTS, Tournament  
+**Lab 4**: Truth Tables, CNF, Resolution, Wumpus World  
+**Lab 5**: Unification, Forward/Backward Chaining, Prolog
 
 ### Part II: Inductive Learning (Chapters 6-10)
 
-| Chapter | Theory | Implementation | Lab | Status |
-|---------|--------|----------------|-----|--------|
-| 6 | Machine Learning | ✅ Complete | 🚧 Thin | 📑 Planned |
-| 7 | Neural Networks | 🚧 Thin | 🚧 Thin | 📑 Planned |
-| 8 | Domain Architectures | ✅ Complete | 🚦 Basic | 📑 Planned |
-| 9 | Unsupervised Learning | 🚧 Thin | 🚧 Thin | 📑 Planned |
-| 10 | Reinforcement Learning | 🚧 Thin | 🚧 Thin | 📑 Planned |
+| Chapter | Theory | Implementation | Lab | Key Topics |
+|---------|--------|----------------|-----|------------|
+| 6 | ✅ | ✅ | ✅ | **Linear/Logistic Regression, Decision Trees** |
+| 7 | ✅ | ✅ | ✅ | **Neural Networks, Backpropagation** |
+| 8 | ✅ | ✅ | ✅ | **CNNs, RNNs, Transformers** |
+| 9 | ✅ | ✅ | ✅ | **Clustering, PCA, Autoencoders** |
+| 10 | ✅ | ✅ | ✅ | **Q-Learning, DQN, Policy Gradients** |
+
+**Lab 6**: Gradient Descent, Cross-Validation, Real Datasets  
+**Lab 7**: Neural Net from Scratch, PyTorch, MNIST  
+**Lab 8**: CNN (CIFAR-10), RNN, LSTM, Attention  
+**Lab 9**: K-Means, Hierarchical, DBSCAN, VAE  
+**Lab 10**: Tabular Q-Learning, DQN, REINFORCE, CartPole
 
 ### Part III: Integration (Chapters 11-13)
 
-| Chapter | Theory | Implementation | Lab | Status |
-|---------|--------|----------------|-----|--------|
-| 11 | Probabilistic Models | ✅ Complete | 🚧 Basic | 📑 Planned |
-| 12 | Knowledge Graphs | ✅ Complete | 🚧 Basic | 📑 Planned |
-| 13 | Integration | 🚧 Planned | 🚧 Basic | 📑 Planned |
+| Chapter | Theory | Implementation | Lab | Key Topics |
+|---------|--------|----------------|-----|------------|
+| 11 | ✅ | ✅ | ✅ | **Bayesian Networks, HMMs** |
+| 12 | ✅ | ✅ | ✅ | **Knowledge Graphs, TransE** |
+| 13 | ✅ | ✅ | ✅ | **Neuro-Symbolic AI, XAI** |
+
+**Lab 11**: Bayesian Networks, Variable Elimination, Gibbs Sampling  
+**Lab 12**: KG Construction, Embeddings, Link Prediction  
+**Lab 13**: Hybrid AI, Differentiable Logic, Explainable AI
 
 ---
 
@@ -90,170 +103,198 @@ pip install -r requirements.txt
 jupyter-book build .
 ```
 
-### Using the Book
+### Using the Labs
 
-1. **Online**: Visit the deployed book (GitHub Pages)
-2. **Binder**: Click 🚀 rocket icon → "Binder" for live notebooks
+```bash
+# Open any lab in Jupyter
+jupyter notebook chapters/ch01_introduction_lab.ipynb
+
+# Or use JupyterLab
+jupyterlab chapters/
+```
+
+### Online Access
+
+1. **GitHub Pages**: Visit the deployed book
+2. **Binder**: Click 🚀 rocket icon → "Binder" for live execution
 3. **Google Colab**: Click 🚀 rocket icon → "Colab"
-4. **Local**: Download notebooks and run in JupyterLab
+4. **Local**: Download and run in your environment
 
 ---
 
-## 💻 Interactive Features
+## 📖 How to Use This Book
 
 ### For Students
 
-- 📓 **Download Notebooks**: Every chapter as `.ipynb`
-- 🚀 **Live Execution**: Run code in browser (Binder/Colab)
-- 📊 **Visualizations**: Interactive plots and diagrams  
-- 🎯 **Exercises**: Hands-on problems with skeleton code
-- ✅ **Lab Notebooks**: Progressive difficulty exercises with solutions
-- 🔗 **Course Integration**: Links to [AI-slides](https://github.com/chebil/AI-slides)
+**Learning Path (per chapter):**
+1. 📚 **Read Theory** notebook for concepts and algorithms
+2. 💻 **Study Implementation** notebook for code examples
+3. ✍️ **Complete Lab** exercises
+   - Start with easy exercises
+   - Progress to intermediate
+   - Challenge yourself with advanced problems
+4. ✅ **Validate** your solutions with test cases
+5. 📊 **Compare** your results with benchmarks
+6. 💭 **Reflect** on discussion questions
+
+**Estimated Time per Chapter**: 4-6 hours (theory + implementation + lab)
 
 ### For Instructors
 
-- All materials are open-source and customizable
-- Lab notebooks can be assigned as homework
-- Solutions structure provided (implement full solutions separately)
-- Integrates with lecture slides from [AI-slides](https://github.com/chebil/AI-slides)
-- Performance benchmarking tools included
-- Auto-grading ready (nbgrader compatible)
+**Course Structure:**
+- **Lectures**: Use theory notebooks + [AI-slides](https://github.com/chebil/AI-slides)
+- **Tutorials**: Walk through implementation notebooks
+- **Homework**: Assign lab exercises (individual or groups)
+- **Projects**: Combine multiple chapters
+- **Assessment**: Lab deliverables + final project
+
+**Customization:**
+- All materials are open-source
+- Fork and modify for your needs
+- Add your own exercises
+- Integrate with your LMS
 
 ---
 
-## 📝 Example Content
+## 💡 Example Lab Exercise
 
-### Chapter 1 Lab - Agent Architectures
-
-```python
-class SimpleReflexAgent:
-    """Agent that responds directly to percepts"""
-    
-    def __init__(self, tolerance: float = 1.0):
-        self.tolerance = tolerance
-        
-    def perceive(self, percept: Dict[str, Any]) -> str:
-        """
-        TODO: Implement the agent's decision logic
-        
-        Rules:
-        - If temp < target - tolerance: return 'heat'
-        - If temp > target + tolerance: return 'cool'
-        - Otherwise: return 'idle'
-        """
-        # YOUR CODE HERE
-        pass
-```
-
-### Chapter 2 Lab - Search Algorithms
+### From Chapter 2 Lab: Implementing A* Search
 
 ```python
 def a_star_search(graph, start, goal, heuristic):
     """
     TODO: Implement A* Search
+    
+    Algorithm:
+    1. Initialize priority queue with start node
+    2. While queue not empty:
+       a. Pop node with lowest f(n) = g(n) + h(n)
+       b. If goal reached, return path
+       c. Expand neighbors and add to queue
+    
     Return: (path, cost, nodes_expanded)
     """
     # YOUR CODE HERE
     pass
 
 # Test on Romania map
-start, goal = 'Arad', 'Bucharest'
-path, cost, nodes = a_star_search(romania_map, start, goal, h_bucharest)
+path, cost, nodes = a_star_search(
+    romania_map, 'Arad', 'Bucharest', h_bucharest
+)
 print(f"Path: {path}")
 print(f"Cost: {cost}")
 print(f"Nodes expanded: {nodes}")
-```
 
-### Chapter 3 Lab - Game Playing
-
-```python
-def minimax(game, maximizing_player):
-    """
-    TODO: Implement Minimax algorithm
-    Return: (best_value, best_move)
-    """
-    # YOUR CODE HERE
-    pass
-
-# Play Tic-Tac-Toe
-game = TicTacToe()
-while not game.is_terminal():
-    value, move = minimax(game, game.current_player)
-    game.make_move(move)
+# Expected output:
+# Path: ['Arad', 'Sibiu', 'Rimnicu', 'Pitesti', 'Bucharest']
+# Cost: 418
+# Nodes expanded: 5
 ```
 
 ---
 
-## 🎯 Learning Path
+## 📊 Lab Statistics
 
-### Week-by-Week Guide
+### Coverage
+- **Total Lab Notebooks**: 13
+- **Total Exercises**: 130+
+- **Programming Problems**: 65+
+- **Challenge Problems**: 13
+- **Discussion Questions**: 52+
 
-**Weeks 1-5: Deductive Reasoning**
-1. Week 1: Ch1 - Agents & Environments + Lab
-2. Week 2: Ch2 - Uninformed Search + Lab Exercises 1-3
-3. Week 3: Ch2 - Informed Search & CSP + Lab Exercises 4-5
-4. Week 4: Ch3 - Minimax & Alpha-Beta + Lab Exercises 1-2
-5. Week 5: Ch3 - MCTS & Tournament + Lab Exercises 3-5
+### Topics Covered
 
-**Weeks 6-10: Inductive Learning**
-6. Week 6: Ch6 - ML Foundations
-7. Week 7: Ch7 - Neural Networks
-8. Week 8: Ch8 - CNNs, RNNs, Transformers
-9. Week 9: Ch9 - Clustering & Dimensionality Reduction
-10. Week 10: Ch10 - Reinforcement Learning
+**Algorithms Implemented:**
+- Search: BFS, DFS, A*, CSP, Hill Climbing
+- Game Playing: Minimax, Alpha-Beta, MCTS
+- Logic: Resolution, Unification, Forward/Backward Chaining
+- ML: Linear/Logistic Regression, Decision Trees, Neural Networks
+- Deep Learning: CNN, RNN, LSTM, Transformers
+- Unsupervised: K-Means, PCA, Autoencoders
+- RL: Q-Learning, DQN, Policy Gradients
+- Advanced: Bayesian Networks, Knowledge Graphs, Hybrid AI
 
-**Weeks 11-13: Integration**
-11. Week 11: Ch11 - Probabilistic Graphical Models
-12. Week 12: Ch12 - Knowledge Graphs
-13. Week 13: Ch13 - Neuro-Symbolic AI & Integration
+---
 
-### Self-Study Approach
+## 🎯 Learning Outcomes
 
-1. 📚 **Read** theory notebook for concepts
-2. 💻 **Review** implementation notebook for examples
-3. ✍️ **Complete** lab exercises (start easy, progress to challenges)
-4. ✅ **Validate** your solutions with test cases
-5. 📊 **Analyze** performance comparisons
-6. 💬 **Discuss** questions with peers/instructors
+After completing this course, students will be able to:
+
+1. **Implement** core AI algorithms from scratch
+2. **Apply** AI techniques to real-world problems
+3. **Compare** different approaches and analyze trade-offs
+4. **Design** complete AI systems
+5. **Evaluate** performance using appropriate metrics
+6. **Explain** how algorithms work and when to use them
+7. **Build** neural networks with modern frameworks
+8. **Create** hybrid systems combining multiple AI paradigms
 
 ---
 
 ## 🛠️ Technology Stack
 
+### Core
 - **Jupyter Book**: Interactive book framework
 - **MyST Markdown**: Enhanced markdown with directives
 - **Python 3.9+**: Programming language
+
+### Libraries Used in Labs
 - **NumPy**: Numerical computing
 - **Matplotlib**: Visualizations
 - **Pandas**: Data analysis
-- **Sphinx**: Documentation generator
+- **Scikit-learn**: ML algorithms
+- **PyTorch**: Deep learning
+- **NetworkX**: Graph algorithms
+- **RDFLib**: Knowledge graphs
+
+### Optional Enhancements
+```bash
+# Install additional packages for advanced labs
+pip install transformers langchain gymnasium rdflib
+```
 
 ---
 
-## 📚 Reference
+## 📚 Reference Textbooks
 
-**Primary Textbook**:  
+**Primary**:  
 Aggarwal, C. C. (2021). *Artificial Intelligence: A Textbook*. Springer.  
 ISBN: 978-3-030-72357-6
 
-**Complementary Resources**:
-- Russell & Norvig. *Artificial Intelligence: A Modern Approach* (4th ed.)
+**Complementary**:
+- Russell & Norvig. *AI: A Modern Approach* (4th ed.)
+- Goodfellow et al. *Deep Learning* (MIT Press)
+- Sutton & Barto. *Reinforcement Learning* (2nd ed.)
+
+**Resources**:
 - Course slides: [AI-slides](https://github.com/chebil/AI-slides)
-- Enhancement roadmap: [ENHANCEMENT_SUMMARY.md](ENHANCEMENT_SUMMARY.md)
+- Enhancement details: [ENHANCEMENT_SUMMARY.md](ENHANCEMENT_SUMMARY.md)
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please:
+We welcome contributions!
 
+**How to contribute:**
 1. Fork the repository
 2. Create a feature branch
-3. Follow existing patterns (see lab notebooks for examples)
-4. Include tests and documentation
-5. Submit a pull request
+3. Add your improvements
+4. Submit a pull request
 
-See [ENHANCEMENT_SUMMARY.md](ENHANCEMENT_SUMMARY.md) for development roadmap and guidelines.
+**Areas for contribution:**
+- Additional exercises
+- Solution examples
+- Improved explanations
+- Bug fixes
+- New visualizations
+- Translations
+
+**Guidelines:**
+- Follow existing notebook structure
+- Include docstrings and comments
+- Add test cases
+- Update documentation
 
 ---
 
@@ -262,6 +303,7 @@ See [ENHANCEMENT_SUMMARY.md](ENHANCEMENT_SUMMARY.md) for development roadmap and
 This educational material is provided for academic purposes. Please respect the copyright of:
 - Original textbook by Charu C. Aggarwal
 - Course materials by Dr. Khalil Chebil
+- Open-source libraries used
 
 ---
 
@@ -272,43 +314,61 @@ This educational material is provided for academic purposes. Please respect the 
 **Email**: khalil.chebil@insat.ucar.tn  
 **GitHub**: [@chebil](https://github.com/chebil)
 
----
-
-## 📈 Progress Tracker
-
-### Phase 1 Completed ✅
-- [x] Repository setup
-- [x] Jupyter Book configuration  
-- [x] Table of contents (13 chapters)
-- [x] **Repository cleanup** (removed duplicates)
-- [x] **Chapter 1 Lab** (agent architectures)
-- [x] **Chapter 2 Lab** (search algorithms)
-- [x] **Chapter 3 Lab** (game playing)
-- [x] Chapter 1 template
-- [x] **Chapter 2 COMPLETE** ✅
-  - [x] All search algorithms
-  - [x] 8-Puzzle with heuristics
-  - [x] Sudoku solver
-  - [x] N-Queens solver
-  - [x] Graph coloring
-  - [x] Local search (Hill Climbing, SA)
-  - [x] Exercises and examples
-- [x] Documentation updates
-
-### Phase 2 In Progress 🚧
-- [ ] Labs for Chapters 4-5 (Logic)
-- [ ] Labs for Chapters 6-10 (Machine Learning)
-- [ ] Labs for Chapters 11-13 (Integration)
-- [ ] Expand Chapter 7 (Neural Networks)
-- [ ] Expand Chapter 9 (Unsupervised Learning)
-- [ ] Expand Chapter 10 (Reinforcement Learning)
-- [ ] Add modern AI topics (Transformers, LLMs)
-- [ ] Create assessment materials
-
-See [ENHANCEMENT_SUMMARY.md](ENHANCEMENT_SUMMARY.md) for detailed roadmap.
+**Questions?**
+- Open an [issue](https://github.com/chebil/AI-course-book/issues)
+- Start a [discussion](https://github.com/chebil/AI-course-book/discussions)
+- Email the instructor
 
 ---
 
-**Ready to start learning AI? Begin with [Chapter 1](chapters/ch01_introduction.ipynb)!** 🤖📚
+## 📈 Project Status
 
-**Want hands-on practice? Try the [Chapter 1 Lab](chapters/ch01_introduction_lab.ipynb)!** ✍️💻
+### ✅ Completed (December 2025)
+
+**Phase 1:**
+- [x] Repository setup and configuration
+- [x] Jupyter Book infrastructure
+- [x] 13-chapter structure
+- [x] Chapter 2 complete implementation
+- [x] Repository cleanup (duplicates removed)
+
+**Phase 2:**
+- [x] **All 13 lab notebooks created** ✨
+- [x] **130+ exercises implemented**
+- [x] Table of contents updated
+- [x] Documentation completed
+- [x] README finalized
+
+### 🎯 Future Enhancements (Optional)
+
+- [ ] Video tutorials for key concepts
+- [ ] Auto-graded assignments (nbgrader)
+- [ ] Interactive visualizations (Plotly)
+- [ ] Streamlit apps for demonstrations
+- [ ] Multilingual support
+- [ ] Additional real-world case studies
+
+---
+
+## 🌟 Acknowledgments
+
+**Based on:**
+- *Artificial Intelligence: A Textbook* by Charu C. Aggarwal
+- Course materials developed at PSAU
+- Contributions from students and TAs
+- Open-source AI community
+
+**Tools:**
+- Jupyter Book framework
+- PyTorch and Scikit-learn communities
+- GitHub for version control and hosting
+
+---
+
+**Ready to learn AI? Start with [Chapter 1](chapters/ch01_introduction.ipynb)!** 🤖📚  
+**Want hands-on practice? Jump to [Chapter 1 Lab](chapters/ch01_introduction_lab.ipynb)!** ✍️💻
+
+---
+
+*Last updated: December 14, 2025*  
+*Version: 2.0 - Complete Lab Integration*
