@@ -3,12 +3,36 @@
 [![Jupyter Book](https://img.shields.io/badge/Jupyter-Book-orange)](https://jupyterbook.org/)
 [![Python](https://img.shields.io/badge/Python-3.9+-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-Educational-green)](LICENSE)
+[![Enhancement Phase 1](https://img.shields.io/badge/Enhancement-Phase%201%20Complete-success)](ENHANCEMENT_SUMMARY.md)
 
-An interactive companion to "Artificial Intelligence: A Textbook" by Charu C. Aggarwal, with comprehensive Python implementations, examples, and exercises.
+An interactive companion to "Artificial Intelligence: A Textbook" by Charu C. Aggarwal, with comprehensive Python implementations, examples, and hands-on lab exercises.
 
-**Instructor**: Khalil Chebil  
+**Instructor**: Dr. Khalil Chebil  
+**Institution**: Prince Sattam bin Abdulaziz University (PSAU)  
 **Course Repository**: [AI-course-book](https://github.com/chebil/AI-course-book)  
 **Lecture Slides**: [AI-slides](https://github.com/chebil/AI-slides)
+
+---
+
+## ✨ What's New - December 2025
+
+### ✅ Completed Enhancements
+
+- **Repository Cleanup**: Removed duplicate files for cleaner structure
+- **Lab Notebooks Added**: Comprehensive hands-on exercises for Chapters 1-3
+- **Enhanced Documentation**: New [ENHANCEMENT_SUMMARY.md](ENHANCEMENT_SUMMARY.md) with roadmap
+- **Improved TOC**: Updated myst.yml to include lab exercises
+
+### 🎓 New Lab Exercises
+
+Each lab includes:
+- 5+ progressive difficulty exercises
+- Skeleton code with TODO comments
+- Test cases and validation
+- Performance benchmarking
+- Visualization templates
+- Challenge problems
+- Discussion questions
 
 ---
 
@@ -18,72 +42,35 @@ This textbook integrates **deductive reasoning** and **inductive learning** appr
 
 ### Part I: Deductive Reasoning (Chapters 1-5)
 
-| Chapter | Title | Status | Key Topics |
-|---------|-------|--------|------------|
-| 1 | Introduction to AI | ✅ Template | Agents, Environments, AI Schools of Thought |
-| 2 | **Searching State Spaces** | ✅ **COMPLETE** | BFS, DFS, A*, CSP, Local Search |
-| 3 | Multiagent Search | 🚧 Planned | Game Playing, Minimax, Alpha-Beta |
-| 4 | Propositional Logic | 🚧 Planned | Logic, Inference, Expert Systems |
-| 5 | First-Order Logic | 🚧 Planned | Predicates, Quantifiers, Unification |
+| Chapter | Theory | Implementation | Lab | Status |
+|---------|--------|----------------|-----|--------|
+| 1 | Introduction to AI | ✅ Complete | ✅ **NEW** | ✅ Ready |
+| 2 | **Searching State Spaces** | ✅ Complete | ✅ **NEW** | ✅ **COMPLETE** |
+| 3 | Multiagent Search | ✅ Complete | 🚧 Basic | ✅ **NEW** Lab |
+| 4 | Propositional Logic | 🚧 Planned | 🚧 Thin | 📑 Planned |
+| 5 | First-Order Logic | 🚧 Planned | 🚧 Thin | 📑 Planned |
+
+**Chapter 1 Lab Topics**: Simple/Model-Based/Goal-Based/Utility-Based Agents, Learning Agent  
+**Chapter 2 Lab Topics**: Romania Pathfinding, 8-Puzzle, N-Queens, Hill Climbing, Performance Analysis  
+**Chapter 3 Lab Topics**: Minimax, Alpha-Beta, Connect Four, MCTS, Algorithm Tournament
 
 ### Part II: Inductive Learning (Chapters 6-10)
 
-| Chapter | Title | Status | Key Topics |
-|---------|-------|--------|------------|
-| 6 | Machine Learning | 🚧 Planned | Regression, Classification, SVMs |
-| 7 | Neural Networks | 🚧 Planned | Backpropagation, Activation Functions |
-| 8 | Domain Architectures | 🚧 Planned | CNNs, RNNs, LSTMs |
-| 9 | Unsupervised Learning | 🚧 Planned | Clustering, PCA, Autoencoders |
-| 10 | Reinforcement Learning | 🚧 Planned | Q-Learning, Policy Gradients, AlphaGo |
+| Chapter | Theory | Implementation | Lab | Status |
+|---------|--------|----------------|-----|--------|
+| 6 | Machine Learning | ✅ Complete | 🚧 Thin | 📑 Planned |
+| 7 | Neural Networks | 🚧 Thin | 🚧 Thin | 📑 Planned |
+| 8 | Domain Architectures | ✅ Complete | 🚦 Basic | 📑 Planned |
+| 9 | Unsupervised Learning | 🚧 Thin | 🚧 Thin | 📑 Planned |
+| 10 | Reinforcement Learning | 🚧 Thin | 🚧 Thin | 📑 Planned |
 
 ### Part III: Integration (Chapters 11-13)
 
-| Chapter | Title | Status | Key Topics |
-|---------|-------|--------|------------|
-| 11 | Probabilistic Models | 🚧 Planned | Bayesian Networks, RBMs |
-| 12 | Knowledge Graphs | 🚧 Planned | Graph Embeddings, Link Prediction |
-| 13 | Integration | 🚧 Planned | Neuro-Symbolic AI, Transfer Learning |
-
----
-
-## ✨ Chapter 2 Highlights (COMPLETE)
-
-**Chapter 2: Searching State Spaces** is now fully implemented with:
-
-### 🔍 Uninformed Search Algorithms
-- ✅ **Breadth-First Search (BFS)** - Complete implementation with statistics
-- ✅ **Depth-First Search (DFS)** - With depth limiting
-- ✅ **Uniform Cost Search (UCS)** - Optimal pathfinding
-
-### 🎯 Informed Search Algorithms  
-- ✅ **Greedy Best-First Search** - Heuristic-guided
-- ✅ **A* Search** - Optimal with admissible heuristics
-- ✅ **Heuristic functions**: Manhattan distance, Misplaced tiles
-
-### 🎲 Complete Case Studies
-1. **8-Puzzle Problem**
-   - Full implementation with state representation
-   - Multiple heuristics (Manhattan, Misplaced tiles)
-   - Algorithm comparison (BFS vs A*)
-   - Visual display methods
-
-2. **Constraint Satisfaction Problems (CSP)**
-   - ✅ **Sudoku Solver** (from your slides example)
-   - ✅ **N-Queens Problem** (all 92 solutions for 8-Queens)
-   - ✅ **Graph Coloring** (vertex coloring with k colors)
-
-### 🎯 Local Search Algorithms
-- ✅ **Hill Climbing** - Basic local search
-- ✅ **Simulated Annealing** - Escape local optima
-- ✅ **N-Queens with Local Search** - Alternative approach
-
-### 📊 Features
-- **Performance metrics**: Nodes expanded, time, memory
-- **Algorithm comparison** tables
-- **Interactive examples** ready to run
-- **Exercises** with clear learning objectives
-- **Mathematical formulations** from textbook
-- **Integration with your slides** (Sudoku, constraints)
+| Chapter | Theory | Implementation | Lab | Status |
+|---------|--------|----------------|-----|--------|
+| 11 | Probabilistic Models | ✅ Complete | 🚧 Basic | 📑 Planned |
+| 12 | Knowledge Graphs | ✅ Complete | 🚧 Basic | 📑 Planned |
+| 13 | Integration | 🚧 Planned | 🚧 Basic | 📑 Planned |
 
 ---
 
@@ -114,63 +101,120 @@ jupyter-book build .
 
 ## 💻 Interactive Features
 
+### For Students
+
 - 📓 **Download Notebooks**: Every chapter as `.ipynb`
 - 🚀 **Live Execution**: Run code in browser (Binder/Colab)
 - 📊 **Visualizations**: Interactive plots and diagrams  
-- 🎯 **Exercises**: Hands-on problems with solutions
+- 🎯 **Exercises**: Hands-on problems with skeleton code
+- ✅ **Lab Notebooks**: Progressive difficulty exercises with solutions
 - 🔗 **Course Integration**: Links to [AI-slides](https://github.com/chebil/AI-slides)
+
+### For Instructors
+
+- All materials are open-source and customizable
+- Lab notebooks can be assigned as homework
+- Solutions structure provided (implement full solutions separately)
+- Integrates with lecture slides from [AI-slides](https://github.com/chebil/AI-slides)
+- Performance benchmarking tools included
+- Auto-grading ready (nbgrader compatible)
 
 ---
 
-## 📝 Example Code
+## 📝 Example Content
 
-From Chapter 2 - Solving 8-Puzzle with A*:
+### Chapter 1 Lab - Agent Architectures
 
 ```python
-from search import EightPuzzle, a_star_search, manhattan_distance
-
-# Create puzzle
-initial = (1, 2, 3, 4, 0, 6, 7, 5, 8)
-puzzle = EightPuzzle(initial)
-
-# Solve with A*
-solution, stats = a_star_search(puzzle, manhattan_distance)
-
-print(f"Solution found in {stats['nodes_expanded']} nodes!")
-print(f"Path length: {stats['path_length']}")
+class SimpleReflexAgent:
+    """Agent that responds directly to percepts"""
+    
+    def __init__(self, tolerance: float = 1.0):
+        self.tolerance = tolerance
+        
+    def perceive(self, percept: Dict[str, Any]) -> str:
+        """
+        TODO: Implement the agent's decision logic
+        
+        Rules:
+        - If temp < target - tolerance: return 'heat'
+        - If temp > target + tolerance: return 'cool'
+        - Otherwise: return 'idle'
+        """
+        # YOUR CODE HERE
+        pass
 ```
 
-From Chapter 2 - Sudoku Solver:
+### Chapter 2 Lab - Search Algorithms
 
 ```python
-puzzle = [
-    [5, 3, 0, 0, 7, 0, 0, 0, 0],
-    [6, 0, 0, 1, 9, 5, 0, 0, 0],
-    # ... (from your slides)
-]
+def a_star_search(graph, start, goal, heuristic):
+    """
+    TODO: Implement A* Search
+    Return: (path, cost, nodes_expanded)
+    """
+    # YOUR CODE HERE
+    pass
 
-solution = solve_sudoku(puzzle)
-# Prints complete solution!
+# Test on Romania map
+start, goal = 'Arad', 'Bucharest'
+path, cost, nodes = a_star_search(romania_map, start, goal, h_bucharest)
+print(f"Path: {path}")
+print(f"Cost: {cost}")
+print(f"Nodes expanded: {nodes}")
+```
+
+### Chapter 3 Lab - Game Playing
+
+```python
+def minimax(game, maximizing_player):
+    """
+    TODO: Implement Minimax algorithm
+    Return: (best_value, best_move)
+    """
+    # YOUR CODE HERE
+    pass
+
+# Play Tic-Tac-Toe
+game = TicTacToe()
+while not game.is_terminal():
+    value, move = minimax(game, game.current_player)
+    game.make_move(move)
 ```
 
 ---
 
 ## 🎯 Learning Path
 
-### For Students
+### Week-by-Week Guide
 
-1. Read chapter content for theory
-2. Run code cells to see algorithms in action
-3. Modify parameters and observe changes
-4. Complete exercises at chapter end
-5. Download notebooks for offline practice
+**Weeks 1-5: Deductive Reasoning**
+1. Week 1: Ch1 - Agents & Environments + Lab
+2. Week 2: Ch2 - Uninformed Search + Lab Exercises 1-3
+3. Week 3: Ch2 - Informed Search & CSP + Lab Exercises 4-5
+4. Week 4: Ch3 - Minimax & Alpha-Beta + Lab Exercises 1-2
+5. Week 5: Ch3 - MCTS & Tournament + Lab Exercises 3-5
 
-### For Instructors
+**Weeks 6-10: Inductive Learning**
+6. Week 6: Ch6 - ML Foundations
+7. Week 7: Ch7 - Neural Networks
+8. Week 8: Ch8 - CNNs, RNNs, Transformers
+9. Week 9: Ch9 - Clustering & Dimensionality Reduction
+10. Week 10: Ch10 - Reinforcement Learning
 
-- All materials are open-source and customizable
-- Notebooks can be assigned as homework
-- Solutions available in instructor repository
-- Integrates with lecture slides from [AI-slides](https://github.com/chebil/AI-slides)
+**Weeks 11-13: Integration**
+11. Week 11: Ch11 - Probabilistic Graphical Models
+12. Week 12: Ch12 - Knowledge Graphs
+13. Week 13: Ch13 - Neuro-Symbolic AI & Integration
+
+### Self-Study Approach
+
+1. 📚 **Read** theory notebook for concepts
+2. 💻 **Review** implementation notebook for examples
+3. ✍️ **Complete** lab exercises (start easy, progress to challenges)
+4. ✅ **Validate** your solutions with test cases
+5. 📊 **Analyze** performance comparisons
+6. 💬 **Discuss** questions with peers/instructors
 
 ---
 
@@ -181,6 +225,7 @@ solution = solve_sudoku(puzzle)
 - **Python 3.9+**: Programming language
 - **NumPy**: Numerical computing
 - **Matplotlib**: Visualizations
+- **Pandas**: Data analysis
 - **Sphinx**: Documentation generator
 
 ---
@@ -194,6 +239,7 @@ ISBN: 978-3-030-72357-6
 **Complementary Resources**:
 - Russell & Norvig. *Artificial Intelligence: A Modern Approach* (4th ed.)
 - Course slides: [AI-slides](https://github.com/chebil/AI-slides)
+- Enhancement roadmap: [ENHANCEMENT_SUMMARY.md](ENHANCEMENT_SUMMARY.md)
 
 ---
 
@@ -203,8 +249,11 @@ Contributions are welcome! Please:
 
 1. Fork the repository
 2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+3. Follow existing patterns (see lab notebooks for examples)
+4. Include tests and documentation
+5. Submit a pull request
+
+See [ENHANCEMENT_SUMMARY.md](ENHANCEMENT_SUMMARY.md) for development roadmap and guidelines.
 
 ---
 
@@ -212,23 +261,29 @@ Contributions are welcome! Please:
 
 This educational material is provided for academic purposes. Please respect the copyright of:
 - Original textbook by Charu C. Aggarwal
-- Course materials by Khalil Chebil
+- Course materials by Dr. Khalil Chebil
 
 ---
 
 ## 📧 Contact
 
-**Instructor**: Khalil Chebil  
+**Instructor**: Dr. Khalil Chebil  
 **Institution**: Prince Sattam bin Abdulaziz University (PSAU)  
+**Email**: khalil.chebil@insat.ucar.tn  
 **GitHub**: [@chebil](https://github.com/chebil)
 
 ---
 
 ## 📈 Progress Tracker
 
+### Phase 1 Completed ✅
 - [x] Repository setup
 - [x] Jupyter Book configuration  
 - [x] Table of contents (13 chapters)
+- [x] **Repository cleanup** (removed duplicates)
+- [x] **Chapter 1 Lab** (agent architectures)
+- [x] **Chapter 2 Lab** (search algorithms)
+- [x] **Chapter 3 Lab** (game playing)
 - [x] Chapter 1 template
 - [x] **Chapter 2 COMPLETE** ✅
   - [x] All search algorithms
@@ -238,12 +293,22 @@ This educational material is provided for academic purposes. Please respect the 
   - [x] Graph coloring
   - [x] Local search (Hill Climbing, SA)
   - [x] Exercises and examples
-- [ ] Chapter 3: Multiagent Search
-- [ ] Chapters 4-5: Logic
-- [ ] Chapters 6-10: Machine Learning
-- [ ] Chapters 11-13: Advanced Topics
-- [ ] Appendices
+- [x] Documentation updates
+
+### Phase 2 In Progress 🚧
+- [ ] Labs for Chapters 4-5 (Logic)
+- [ ] Labs for Chapters 6-10 (Machine Learning)
+- [ ] Labs for Chapters 11-13 (Integration)
+- [ ] Expand Chapter 7 (Neural Networks)
+- [ ] Expand Chapter 9 (Unsupervised Learning)
+- [ ] Expand Chapter 10 (Reinforcement Learning)
+- [ ] Add modern AI topics (Transformers, LLMs)
+- [ ] Create assessment materials
+
+See [ENHANCEMENT_SUMMARY.md](ENHANCEMENT_SUMMARY.md) for detailed roadmap.
 
 ---
 
 **Ready to start learning AI? Begin with [Chapter 1](chapters/ch01_introduction.ipynb)!** 🤖📚
+
+**Want hands-on practice? Try the [Chapter 1 Lab](chapters/ch01_introduction_lab.ipynb)!** ✍️💻
