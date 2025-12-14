@@ -17,18 +17,24 @@ project:
               title: Theory and Concepts
             - file: chapters/ch01_introduction_implementation.ipynb
               title: Implementation and Examples
+            - file: chapters/ch01_introduction_lab.ipynb
+              title: Lab Exercises
         - title: Chapter 2 - Searching State Spaces
           children:
             - file: chapters/ch02_search.ipynb
               title: Theory and Algorithms
             - file: chapters/ch02_search_implementation.ipynb
               title: Implementation and Applications
+            - file: chapters/ch02_search_lab.ipynb
+              title: Lab Exercises
         - title: Chapter 3 - Multiagent Search
           children:
             - file: chapters/ch03_multiagent.ipynb
               title: Theory and Algorithms
             - file: chapters/ch03_multiagent_implementation.ipynb
               title: Implementation and Applications
+            - file: chapters/ch03_multiagent_lab.ipynb
+              title: Lab Exercises
         - title: Chapter 4 - Propositional Logic
           children:
             - file: chapters/ch04_propositional.ipynb
