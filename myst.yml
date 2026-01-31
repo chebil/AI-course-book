@@ -7,6 +7,8 @@ project:
     - name: Dr. Khalil Chebil
       email: khalil.chebil@insat.ucar.tn
   github: https://github.com/chebil/AI-course-book
+  exports:
+    - format: pdf
   toc:
     - file: intro.md
     - title: Part I - Deductive Reasoning
