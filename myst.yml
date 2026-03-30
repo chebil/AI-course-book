@@ -31,10 +31,10 @@ project:
           children:
             - file: chapters/ch02_search.ipynb
               title: Theory and Algorithms
-            - file: chapters/ch02_informed.ipynb
-              title: Informed Search implementation and Applications
             - file: chapters/ch02_uninformed.ipynb
               title: Uninformed Search implementation and Applications
+            - file: chapters/ch02_informed.ipynb
+              title: Informed Search implementation and Applications
             - file: chapters/ch02_search_lab.ipynb
               title: Lab Exercises
         - title: Chapter 3 - Multiagent Search
