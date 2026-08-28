@@ -15,6 +15,8 @@ project:
       children:
         - title: Chapter 1 - Introduction to AI
           children:
+            - file: chapters/ch01_slides.md
+              title: Presentation Slides
             - file: chapters/ch01_introduction.ipynb
               title: Theory and Concepts
             - file: chapters/ch01_Agents.ipynb
@@ -27,8 +29,6 @@ project:
               title: Inductive vs Deductive Reasoning
             - file: chapters/ch01_introduction_lab.ipynb
               title: CSPs Lab
-            - file: chapters/ch01_slides.md
-              title: Presentation Slides (Offline)
         - title: Chapter 2 - Searching State Spaces
           children:
             - file: chapters/ch02_search.ipynb
