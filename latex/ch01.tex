@@ -63,7 +63,6 @@
     A branch of computer science concerned with the
     \keyword{automation of intelligent behaviors}.
   \end{block}
-  \vspace{0.4em}
   \begin{center}
   \begin{tikzpicture}[node distance=0.6cm and 1.3cm]
     \node[processstep, fill=PrimaryDark, text=white] (sys) {Intelligent\\System};
@@ -74,7 +73,6 @@
     \foreach \n in {a,b,c,d}{\draw[-{Latex[length=2mm]},PrimaryMid,thick] (sys.east) -- (\n.west);}
   \end{tikzpicture}
   \end{center}
-  \vspace{0.2em}
   \begin{center}\small\textit{Examples:} speech recognition, visual perception, language translation.\end{center}
 \end{frame}
 
@@ -187,11 +185,7 @@
 
 \begin{frame}{Subfields of AI}{The AI landscape}
   \begin{center}
-    \includegraphics[width=0.86\textwidth]{image.png}
-  \end{center}
-  \begin{center}\scriptsize
-    Machine Learning \textbullet\ NLP \textbullet\ Vision \textbullet\ Speech
-    \textbullet\ Expert Systems \textbullet\ Planning \textbullet\ Robotics
+    \includegraphics[width=0.5\textwidth]{image.png}
   \end{center}
 \end{frame}
 
@@ -357,6 +351,187 @@
 \end{frame}
 
 % ============================================================
+\section{Constraint Satisfaction Problems}
+% ============================================================
+
+\begin{frame}{Constraint Satisfaction Problems (CSPs)}{A deductive modeling framework}
+  \begin{columns}[c]
+    \begin{column}{0.58\textwidth}
+      A \keyword{CSP} is defined by three ingredients:
+      \begin{itemize}\small
+        \item \keyword{Variables} $X_1,\dots,X_n$
+        \item \keyword{Domains} — allowed values for each variable
+        \item \keyword{Constraints} — legal combinations of values
+      \end{itemize}
+      \vspace{0.3em}
+      A \emph{solution} assigns a value to every variable so that \important{all
+      constraints hold}.
+      \vspace{0.4em}
+      \begin{exampleblock}{Everyday CSPs}
+        \small Sudoku \textbullet\ $N$-Queens \textbullet\ Traveling Salesperson
+        \textbullet\ map / graph coloring \textbullet\ scheduling.
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \begin{center}
+      \begin{tikzpicture}[node distance=0.45cm, b/.style={processstep, minimum width=3.1cm}]
+        \node[b, fill=PrimaryLight!45] (v) {Variables};
+        \node[b, below=of v, fill=SuccessGreen!20] (d) {Domains};
+        \node[b, below=of d, fill=AccentYellow!35] (c) {Constraints};
+        \node[b, below=of c, fill=AccentOrange!20, draw=AccentOrange] (s) {Solution};
+        \draw[-{Latex[length=2mm]},PrimaryMid] (v)--(d);
+        \draw[-{Latex[length=2mm]},PrimaryMid] (d)--(c);
+        \draw[-{Latex[length=2mm]},PrimaryMid] (c)--(s);
+      \end{tikzpicture}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Example 1 — Sudoku as a CSP}{Fill the $9\times9$ grid}
+  \begin{columns}[T]
+    \begin{column}{0.6\textwidth}
+      \begin{itemize}\small
+        \item \keyword{Variables}: $X_{i,j}$ for each cell $(i,j)$
+        \item \keyword{Domains}: $\{1,2,\dots,9\}$
+        \item \keyword{Constraints} — all different within each unit:
+      \end{itemize}
+      \small
+      \begin{block}{Row / column / sub-grid}
+        \footnotesize
+        \textbf{Rows:} $\forall i,\ j\neq k:\ X_{i,j}\neq X_{i,k}$ \\[0.2em]
+        \textbf{Columns:} $\forall j,\ i\neq k:\ X_{i,j}\neq X_{k,j}$ \\[0.2em]
+        \textbf{Sub-grids:} within each $3\times3$ block, \\
+        \quad $X_{3m+i,\,3n+j}\neq X_{3m+k,\,3n+l}$ for $(i,j)\neq(k,l)$
+      \end{block}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{center}
+      \begin{tikzpicture}[scale=0.38]
+        \fill[PrimaryLight!30] (0,0) rectangle (9,9);
+        \draw[step=1, PrimaryMid, thin] (0,0) grid (9,9);
+        \draw[step=3, PrimaryDark, line width=1.2pt] (0,0) grid (9,9);
+        \draw[PrimaryDark, line width=1.2pt] (0,0) rectangle (9,9);
+      \end{tikzpicture}\\[0.3em]
+      \scriptsize 81 variables, 27 \emph{all-different} constraints.
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Sudoku — Python Implementation}{Using the \texttt{python-constraint} library}
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily\scriptsize, numbers=none,
+                   xleftmargin=0.5em, framexleftmargin=0.5em]
+from constraint import Problem, AllDifferentConstraint
+
+def solve_sudoku(puzzle):            # puzzle: 9x9 list, 0 = blank
+    p = Problem()
+    for r in range(9):
+        for c in range(9):
+            v = puzzle[r][c]
+            p.addVariable((r, c), range(1, 10) if v == 0 else [v])
+    for i in range(9):               # rows and columns all-different
+        p.addConstraint(AllDifferentConstraint(), [(i, c) for c in range(9)])
+        p.addConstraint(AllDifferentConstraint(), [(r, i) for r in range(9)])
+    for br in range(3):              # 3x3 sub-grids all-different
+        for bc in range(3):
+            cells = [(br*3 + i, bc*3 + j) for i in range(3) for j in range(3)]
+            p.addConstraint(AllDifferentConstraint(), cells)
+    sols = p.getSolutions()
+    return sols[0] if sols else None
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Example 2 — Eight Queens as a CSP}{No two queens attack each other}
+  \begin{columns}[T]
+    \begin{column}{0.58\textwidth}
+      \begin{itemize}\small
+        \item \keyword{Variables}: $Q_1,\dots,Q_8$ — column of the queen in row $i$
+        \item \keyword{Domains}: $\{1,\dots,8\}$
+      \end{itemize}
+      \begin{block}{Constraints}
+        \small
+        \textbf{Columns differ:} $\ \forall i\neq j:\ Q_i \neq Q_j$ \\[0.3em]
+        \textbf{Diagonals differ:} $\ |Q_i - Q_j| \neq |i - j|$
+      \end{block}
+      \centering\scriptsize
+      Rows are handled implicitly — one queen per row by construction.
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \begin{center}
+      \begin{tikzpicture}[scale=0.34]
+        \foreach \x in {0,...,7}{\foreach \y in {0,...,7}{
+          \pgfmathtruncatemacro{\s}{mod(\x+\y,2)}
+          \ifnum\s=0 \fill[PrimaryLight!35] (\x,\y) rectangle ++(1,1);\fi
+        }}
+        \draw[PrimaryMid] (0,0) grid (8,8);
+        \draw[PrimaryDark, line width=1pt] (0,0) rectangle (8,8);
+        \foreach \r/\c in {1/1,2/5,3/8,4/6,5/3,6/7,7/2,8/4}{
+          \fill[AccentOrange] (\c-0.5,\r-0.5) circle (0.32);
+        }
+      \end{tikzpicture}\\[0.3em]
+      \scriptsize One valid placement of 8 queens.
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Example 3 — Traveling Salesperson as a CSP}{Shortest tour of all cities}
+  \begin{columns}[T]
+    \begin{column}{0.56\textwidth}
+      Cities $\{1,\dots,n\}$ with distances $d(i,j)$; find a tour of cost at most $C$.
+      \begin{itemize}\small
+        \item \keyword{Variables}: $X_{i,j}\in\{0,1\}$ — $1$ if the tour goes directly $i\to j$
+        \item \keyword{Domains}: $\{0,1\}$
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.44\textwidth}
+      \begin{block}{Constraints}
+        \footnotesize
+        Enter each city once: $\displaystyle\sum_{i\neq j} X_{i,j}=1$ \\[0.4em]
+        Leave each city once: $\displaystyle\sum_{j\neq i} X_{i,j}=1$ \\[0.4em]
+        Bounded cost: $\displaystyle\sum_{i}\sum_{j\neq i} d(i,j)\,X_{i,j}\le C$
+      \end{block}
+    \end{column}
+  \end{columns}
+  \vspace{0.3em}
+  \begin{center}\scriptsize
+    A tour with $n$ cities has $(n-1)!$ possibilities — \important{NP-hard} as $n$ grows.
+  \end{center}
+\end{frame}
+
+\begin{frame}{Example 4 — Graph / Map Coloring as a CSP}{Adjacent regions differ}
+  \begin{columns}[T]
+    \begin{column}{0.6\textwidth}
+      Graph $G=(V,E)$ with colors $\{1,\dots,k\}$.
+      \begin{itemize}\small
+        \item \keyword{Variables}: $X_{i,c}\in\{0,1\}$ — $1$ if vertex $i$ has color $c$
+        \item \keyword{Domains}: $\{0,1\}$
+      \end{itemize}
+      \begin{block}{Constraints}
+        \footnotesize
+        One color per node: $\displaystyle\sum_{c=1}^{k} X_{i,c}=1,\ \forall i$ \\[0.3em]
+        Adjacent differ: $\ X_{i,c}+X_{j,c}\le 1,\ \forall (i,j)\in E,\ \forall c$
+      \end{block}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{center}
+      \begin{tikzpicture}[scale=0.95, every node/.style={circle, draw, minimum size=0.5cm, font=\scriptsize\bfseries}]
+        \node[fill=AlertRed!45] (a) at (0,1.2) {A};
+        \node[fill=SuccessGreen!45] (b) at (1.4,1.7) {B};
+        \node[fill=PrimaryLight] (c) at (2.3,0.6) {C};
+        \node[fill=SuccessGreen!45] (d) at (1.5,-0.4) {D};
+        \node[fill=AlertRed!45] (e) at (0.2,-0.5) {E};
+        \draw (a)--(b); \draw (b)--(c); \draw (c)--(d);
+        \draw (d)--(e); \draw (e)--(a); \draw (a)--(d);
+      \end{tikzpicture}\\[0.3em]
+      \scriptsize No edge joins two same-colored nodes.
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ============================================================
 \section{Intelligent Agents}
 % ============================================================
 
@@ -444,6 +619,13 @@
     \textbf{Trading bot} $\to$ utility-based \quad
     \textbf{AlphaGo} $\to$ learning \\
   \end{tabular}
+  \end{center}
+  \vspace{0.2em}
+  \begin{center}
+    \href{https://colab.research.google.com/github/chebil/AI-course-book/blob/main/chapters/ch01_AgentLab.ipynb}{%
+      \tikz{\node[fill=AccentOrange, rounded corners=4pt, inner sep=5pt,
+        text=white, font=\small\bfseries]
+        {$\blacktriangleright$\,\ Open the Agent Lab in Google Colab};}}
   \end{center}
 \end{frame}
 
