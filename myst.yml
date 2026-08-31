@@ -11,66 +11,66 @@ project:
     - format: pdf
   toc:
     - file: intro.md
-    - title: Part I - Deductive Reasoning
+    # - title: Part I - Deductive Reasoning
+    #   children:
+    - title: Chapter 1 - Introduction to AI
       children:
-        - title: Chapter 1 - Introduction to AI
-          children:
-            - file: chapters/ch01_slides.md
-              title: Presentation Slides
-            - file: chapters/ch01_introduction.ipynb
-              title: Theory and Concepts
-            - file: chapters/ch01_Agents.ipynb
-              title: The concept of Agents and Environments
-            - file: chapters/ch01_AgentLab.ipynb
-              title: Agents Lab
-            - file: chapters/ch01_AgentAssignments.ipynb
-              title: Agents Assignments
-            - file: chapters/ch01_inductive_deductive.ipynb
-              title: Inductive vs Deductive Reasoning
-            - file: chapters/ch01_introduction_lab.ipynb
-              title: CSPs Lab
-        - title: Chapter 2 - Searching State Spaces
-          children:
-            - file: chapters/ch02_slides.md
-              title: Presentation Slides
-            - file: chapters/ch02_search.ipynb
-              title: Theory and Algorithms
-            - file: chapters/ch02_uninformed.ipynb
-              title: Uninformed Search implementation and Applications
-            - file: chapters/ch02_informed.ipynb
-              title: Informed Search implementation and Applications
-            - file: chapters/ch02_search_lab.ipynb
-              title: Lab Exercises
-        - title: Chapter 3 - Multiagent Search
-          children:
-            - file: chapters/ch03_slides.md
-              title: Presentation Slides
-            - file: chapters/ch03_multiagent.ipynb
-              title: Theory and Algorithms
-            - file: chapters/ch03_multiagent_implementation.ipynb
-              title: Implementation and Applications
-            - file: chapters/ch03_multiagent_lab.ipynb
-              title: Lab Exercises     
-        - title: Chapter 4 - Propositional Logic
-          children:
-            - file: chapters/ch04_slides.md
-              title: Presentation Slides
-            - file: chapters/ch04_propositional.ipynb
-              title: Theory and Algorithms
-            - file: chapters/ch04_propositional_implementation.ipynb
-              title: Implementation and Applications
-            - file: chapters/ch04_propositional_lab.ipynb
-              title: Lab Exercises           
-        - title: Chapter 5 - First-Order Logic
-          children:
-            - file: chapters/ch05_slides.md
-              title: Presentation Slides
-            - file: chapters/ch05_firstorder.ipynb
-              title: Theory and Algorithms
-            - file: chapters/ch05_firstorder_implementation.ipynb
-              title: Implementation and Applications
-            - file: chapters/ch05_firstorder_lab.ipynb
-              title: Lab Exercises           
+        - file: chapters/ch01_slides.md
+          title: Presentation Slides
+        - file: chapters/ch01_introduction.ipynb
+          title: Theory and Concepts
+        - file: chapters/ch01_Agents.ipynb
+          title: The concept of Agents and Environments
+        - file: chapters/ch01_AgentLab.ipynb
+          title: Agents Lab
+        - file: chapters/ch01_AgentAssignments.ipynb
+          title: Agents Assignments
+        - file: chapters/ch01_inductive_deductive.ipynb
+          title: Inductive vs Deductive Reasoning
+        - file: chapters/ch01_introduction_lab.ipynb
+          title: CSPs Lab
+    - title: Chapter 2 - Searching State Spaces
+      children:
+        - file: chapters/ch02_slides.md
+          title: Presentation Slides
+        - file: chapters/ch02_search.ipynb
+          title: Theory and Algorithms
+        - file: chapters/ch02_uninformed.ipynb
+          title: Uninformed Search implementation and Applications
+        - file: chapters/ch02_informed.ipynb
+          title: Informed Search implementation and Applications
+        - file: chapters/ch02_search_lab.ipynb
+          title: Lab Exercises
+    - title: Chapter 3 - Multiagent Search
+      children:
+        - file: chapters/ch03_slides.md
+          title: Presentation Slides
+        - file: chapters/ch03_multiagent.ipynb
+          title: Theory and Algorithms
+        - file: chapters/ch03_multiagent_implementation.ipynb
+          title: Implementation and Applications
+        - file: chapters/ch03_multiagent_lab.ipynb
+          title: Lab Exercises     
+    - title: Chapter 4 - Propositional Logic
+      children:
+        - file: chapters/ch04_slides.md
+          title: Presentation Slides
+        - file: chapters/ch04_propositional.ipynb
+          title: Theory and Algorithms
+        - file: chapters/ch04_propositional_implementation.ipynb
+          title: Implementation and Applications
+        - file: chapters/ch04_propositional_lab.ipynb
+          title: Lab Exercises           
+    - title: Chapter 5 - First-Order Logic
+      children:
+        - file: chapters/ch05_slides.md
+          title: Presentation Slides
+        - file: chapters/ch05_firstorder.ipynb
+          title: Theory and Algorithms
+        - file: chapters/ch05_firstorder_implementation.ipynb
+          title: Implementation and Applications
+        - file: chapters/ch05_firstorder_lab.ipynb
+          title: Lab Exercises           
     # - title: Part II - Inductive Learning
     #   children:
     #     - title: Chapter 6 - Machine Learning Introduction
