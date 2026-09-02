@@ -19,16 +19,17 @@ project:
           title: Presentation Slides
         - file: chapters/ch01_introduction.ipynb
           title: Theory and Concepts
+        - file: chapters/ch01_inductive_deductive.ipynb
+          title: Inductive vs Deductive Reasoning
+        - file: chapters/ch01_introduction_lab.ipynb
+          title: CSPs Lab
         - file: chapters/ch01_Agents.ipynb
           title: The concept of Agents and Environments
         - file: chapters/ch01_AgentLab.ipynb
           title: Agents Lab
         - file: chapters/ch01_AgentAssignments.ipynb
           title: Agents Assignments
-        - file: chapters/ch01_inductive_deductive.ipynb
-          title: Inductive vs Deductive Reasoning
-        - file: chapters/ch01_introduction_lab.ipynb
-          title: CSPs Lab
+        
     - title: Chapter 2 - Searching State Spaces
       children:
         - file: chapters/ch02_slides.md
