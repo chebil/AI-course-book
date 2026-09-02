@@ -10,14 +10,14 @@ downloads:
 
 
 
-[![Chapter 1 — Introduction to Artificial Intelligence: title slide preview](images/ch1/ch01_slides_preview.png)](slides/ch01_introduction_slides.pdf)
+[![Chapter 1 — Introduction to Artificial Intelligence: title slide preview](images/ch1/ch01_slides_preview.png)](latex/ch01.pdf)
 
 :::{tip}
-Click the preview above to open the **full 31-slide deck** in a new browser tab.
+Click the preview above to open the **full deck** in a new browser tab.
 :::
 
 ## Download
 
-{download}`⬇ Download Chapter 1 Slides (PDF) <slides/ch01_introduction_slides.pdf>`
+{download}`⬇ Download Chapter 1 Slides (PDF) <latex/ch01.pdf>`
 
 

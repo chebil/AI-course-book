@@ -179,6 +179,25 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{Search Problem: 8-Queens}{Formalizing state, actions, and goal}
+  \begin{block}{The State Space}
+    \small Each state is a configuration of the board with a certain number of queens placed on it.
+  \end{block}
+  \begin{exampleblock}{Successor Function}
+    \small Generates every valid configuration reached by adding \keyword{one more queen}; e.g.\
+    with 3 queens already placed, it tries every column of the next row to produce all valid
+    4-queen configurations.
+  \end{exampleblock}
+  \begin{alertblock}{Start State \& Goal Test}
+    \small \keyword{Start}: an empty chessboard. \keyword{Goal}: all 8 queens placed with no two
+    attacking each other (same row, column, or diagonal).
+  \end{alertblock}
+  \begin{center}\scriptsize
+  \important{Dead end:} a partial placement (say, 6 queens) may admit \emph{no} valid 7-queen
+  extension — the successor function returns nothing, and that branch is abandoned.
+  \end{center}
+\end{frame}
+
 % ============================================================
 \section{Uninformed Search}
 % ============================================================
@@ -215,6 +234,29 @@
       \end{center}
     \end{column}
   \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Generic Search Algorithm}{The pseudocode behind BFS, DFS, UCS, \ldots}
+\begin{lstlisting}[language={}, basicstyle=\ttfamily\scriptsize, numbers=none,
+                   xleftmargin=0.5em, framexleftmargin=0.5em]
+Algorithm GenericSearch(Initial State: s, Goal Condition: G)
+begin
+  LIST = { s };
+  repeat
+    Select current node i from LIST based on pre-defined strategy;
+    Delete node i from LIST;  Add node i to hash table VISIT;
+    for all nodes j in A(i) directly connected to i via transition do
+      if (j is not in VISIT) add j to LIST;
+      pred(j) = i;
+  until LIST is empty or current node i satisfies G;
+  if current node satisfies G return success;
+  else return failure;
+  { pred(.) is used to trace back the path from i to s }
+end
+\end{lstlisting}
+\centering\scriptsize
+\keyword{FIFO} $\Rightarrow$ BFS \quad \keyword{LIFO} $\Rightarrow$ DFS \quad
+\keyword{priority queue} $\Rightarrow$ UCS / Greedy / A$^\ast$
 \end{frame}
 
 \begin{frame}{Breadth-First Search (BFS)}{Level-by-level, FIFO queue}
@@ -254,6 +296,46 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{Breadth-First Search — Worked Example}{The same graph, explored level by level}
+  \begin{center}
+  \begin{tikzpicture}[>=Latex]
+    \tikzset{st/.style={circle, draw=PrimaryMid, fill=PrimaryLight!45, minimum size=0.6cm, font=\scriptsize}}
+    \node[st, fill=AccentYellow!40, draw=AccentOrange] (S) at (0,0) {S};
+    \node[st] (a) at (1.7,1.3) {a};
+    \node[st] (d) at (1.7,-0.5) {d};
+    \node[st] (p) at (1.7,-2.2) {p};
+    \node[st] (b) at (3.4,1.7) {b};
+    \node[st] (c) at (3.4,0.2) {c};
+    \node[st] (e) at (5.3,-0.4) {e};
+    \node[st] (q) at (5.3,-2.0) {q};
+    \node[st] (f) at (7.1,1.3) {f};
+    \node[st] (h) at (7.1,-0.4) {h};
+    \node[st] (r) at (7.1,-2.0) {r};
+    \node[st, fill=SuccessGreen!35, draw=SuccessGreen] (G) at (8.8,1.3) {G};
+    \draw[->,PrimaryMid] (S)--(a);
+    \draw[->,PrimaryMid] (S)--(d);
+    \draw[->,PrimaryMid] (S)--(p);
+    \draw[->,PrimaryMid] (a)--(b);
+    \draw[->,PrimaryMid] (a)--(c);
+    \draw[->,PrimaryMid] (d)--(b);
+    \draw[->,PrimaryMid] (d)--(c);
+    \draw[->,PrimaryMid] (d)--(e);
+    \draw[->,PrimaryMid] (c)--(e);
+    \draw[->,PrimaryMid] (p)--(q);
+    \draw[->,PrimaryMid] (p)--(e);
+    \draw[->,PrimaryMid] (q)--(h);
+    \draw[->,PrimaryMid] (e)--(f);
+    \draw[->,PrimaryMid] (e)--(h);
+    \draw[->,PrimaryMid] (e)--(r);
+    \draw[->,PrimaryMid] (f)--(G);
+  \end{tikzpicture}
+  \end{center}
+  \centering\scriptsize
+  \keyword{Dequeue order} (successors generated left-to-right, e.g.\ $A(S)=\{a,d,p\}$):
+  S, a, d, p, b, c, e, q, f, h, r, G — every shallower node is fully expanded
+  before the depth-4 goal G is reached.
+\end{frame}
+
 \begin{frame}{Depth-First Search (DFS)}{Go deep, LIFO stack}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
@@ -291,9 +373,51 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{Depth-First Search — Worked Example}{The same graph, explored via a LIFO stack}
+  \begin{center}
+  \begin{tikzpicture}[>=Latex]
+    \tikzset{st/.style={circle, draw=PrimaryMid, fill=PrimaryLight!45, minimum size=0.6cm, font=\scriptsize}}
+    \node[st, fill=AccentYellow!40, draw=AccentOrange] (S) at (0,0) {S};
+    \node[st] (a) at (1.7,1.3) {a};
+    \node[st] (d) at (1.7,-0.5) {d};
+    \node[st] (p) at (1.7,-2.2) {p};
+    \node[st] (b) at (3.4,1.7) {b};
+    \node[st] (c) at (3.4,0.2) {c};
+    \node[st] (e) at (5.3,-0.4) {e};
+    \node[st] (q) at (5.3,-2.0) {q};
+    \node[st] (f) at (7.1,1.3) {f};
+    \node[st] (h) at (7.1,-0.4) {h};
+    \node[st] (r) at (7.1,-2.0) {r};
+    \node[st, fill=SuccessGreen!35, draw=SuccessGreen] (G) at (8.8,1.3) {G};
+    \draw[->,PrimaryMid] (S)--(a);
+    \draw[->,PrimaryMid] (S)--(d);
+    \draw[->,PrimaryMid] (S)--(p);
+    \draw[->,PrimaryMid] (a)--(b);
+    \draw[->,PrimaryMid] (a)--(c);
+    \draw[->,PrimaryMid] (d)--(b);
+    \draw[->,PrimaryMid] (d)--(c);
+    \draw[->,PrimaryMid] (d)--(e);
+    \draw[->,PrimaryMid] (c)--(e);
+    \draw[->,PrimaryMid] (p)--(q);
+    \draw[->,PrimaryMid] (p)--(e);
+    \draw[->,PrimaryMid] (q)--(h);
+    \draw[->,PrimaryMid] (e)--(f);
+    \draw[->,PrimaryMid] (e)--(h);
+    \draw[->,PrimaryMid] (e)--(r);
+    \draw[->,PrimaryMid] (f)--(G);
+  \end{tikzpicture}
+  \end{center}
+  \centering\scriptsize
+  \keyword{Pop order} (pushing S's successors as a, d, p leaves \texttt{p} on top
+  of the stack): S, p, e, r, h, f, G — the goal is reached in just 7
+  expansions, entirely bypassing a, b, c, d, and q.\\
+  \important{Caveat:} a different push order could send DFS down the
+  a$\to$c$\to$e branch instead — the path found is not guaranteed to be cheapest.
+\end{frame}
+
 \begin{frame}{BFS vs.\ DFS}{Frontier shape trade-off}
   \begin{center}
-    \includegraphics[width=0.82\textwidth]{bfsdfs.png}
+    \includegraphics[width=0.42\textwidth]{bfsdfs.png}
   \end{center}
   \begin{center}\small
   \begin{tabular}{@{}lll@{}}
@@ -344,6 +468,46 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{Uniform-Cost Search — Worked Example}{The same graph, now with edge costs}
+  \begin{center}
+  \begin{tikzpicture}[>=Latex]
+    \tikzset{st/.style={circle, draw=PrimaryMid, fill=PrimaryLight!45, minimum size=0.6cm, font=\scriptsize}}
+    \node[st, fill=AccentYellow!40, draw=AccentOrange] (S) at (0,0) {S};
+    \node[st] (a) at (1.7,1.3) {a};
+    \node[st] (d) at (1.7,-0.5) {d};
+    \node[st] (p) at (1.7,-2.2) {p};
+    \node[st] (b) at (3.4,1.7) {b};
+    \node[st] (c) at (3.4,0.2) {c};
+    \node[st] (e) at (5.3,-0.4) {e};
+    \node[st] (q) at (5.3,-2.0) {q};
+    \node[st] (f) at (7.1,1.3) {f};
+    \node[st] (h) at (7.1,-0.4) {h};
+    \node[st] (r) at (7.1,-2.0) {r};
+    \node[st, fill=SuccessGreen!35, draw=SuccessGreen] (G) at (8.8,1.3) {G};
+    \draw[->,PrimaryMid] (S)--(a) node[midway,above,font=\tiny]{12};
+    \draw[->,PrimaryMid] (S)--(d) node[midway,left,font=\tiny]{6};
+    \draw[->,SuccessGreen,thick] (S)--(p) node[midway,left,font=\tiny]{1};
+    \draw[->,PrimaryMid] (a)--(b) node[midway,above,font=\tiny]{2};
+    \draw[->,PrimaryMid] (a)--(c) node[midway,right,font=\tiny]{3};
+    \draw[->,PrimaryMid] (d)--(b) node[midway,left,font=\tiny]{4};
+    \draw[->,PrimaryMid] (d)--(c) node[midway,below,font=\tiny]{6};
+    \draw[->,PrimaryMid] (d)--(e) node[midway,below,font=\tiny]{8};
+    \draw[->,PrimaryMid] (c)--(e) node[midway,above,font=\tiny]{2};
+    \draw[->,PrimaryMid] (p)--(q) node[midway,below,font=\tiny]{1};
+    \draw[->,SuccessGreen,thick] (p)--(e) node[midway,right,font=\tiny]{2};
+    \draw[->,PrimaryMid] (q)--(h) node[midway,right,font=\tiny]{2};
+    \draw[->,SuccessGreen,thick] (e)--(f) node[midway,above,font=\tiny]{2};
+    \draw[->,PrimaryMid] (e)--(h) node[midway,above,font=\tiny]{5};
+    \draw[->,PrimaryMid] (e)--(r) node[midway,below,font=\tiny]{9};
+    \draw[->,SuccessGreen,thick] (f)--(G) node[midway,above,font=\tiny]{1};
+  \end{tikzpicture}
+  \end{center}
+  \centering\scriptsize
+  \keyword{Cheapest path:} S$\to$p$\to$e$\to$f$\to$G, cost $1{+}2{+}2{+}1=6$ —
+  cheaper than S$\to$d$\to$e$\to$f$\to$G (cost $17$) or
+  S$\to$a$\to$c$\to$e$\to$f$\to$G (cost $20$).
+\end{frame}
+
 \begin{frame}{Bidirectional Search}{Meet in the middle}
   \begin{columns}[c]
     \begin{column}{0.5\textwidth}
@@ -370,6 +534,80 @@
       \end{center}
       \centering\scriptsize
       Needs predecessors and a meeting test; goal must be explicit.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Bidirectional Search}{Pseudocode: two frontiers, two visited sets}
+\begin{lstlisting}[language={}, basicstyle=\ttfamily\tiny, numbers=none,
+                   xleftmargin=0.5em, framexleftmargin=0.5em]
+Algorithm BiSearch(Initial State: s, Goal State: g)
+begin
+  FLIST = { s };  BLIST = { g };
+  repeat
+    Select if from FLIST, ib from BLIST (pre-defined strategy);
+    Delete if from FLIST, ib from BLIST;
+    Add if to FVISIT, ib to BVISIT;
+    for each j in A(if) not in FVISIT: add j to FLIST; pred(j)=if;
+    for each j in B(ib) not in BVISIT: add j to BLIST; succ(j)=ib;
+  until FLIST or BLIST empty, or (FLIST intersect BLIST) != {};
+  if (FLIST or BLIST empty) return failure; else return success;
+  { Reconstruct the path via any node in FLIST intersect BLIST,
+    tracing pred(.) back toward s and succ(.) forward toward g }
+end
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Case Study: The Eight-Puzzle}{A 3$\times$3 sliding-tile benchmark}
+  \begin{columns}[T]
+    \begin{column}{0.42\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{Best3.png}\\[0.2em]
+      \scriptsize A start and a goal configuration
+    \end{column}
+    \begin{column}{0.58\textwidth}
+      \begin{itemize}\small
+        \item \keyword{State space}: each arrangement of the 8 tiles + blank
+        \item \keyword{Successor function}: slide a tile adjacent to the blank
+        \item \keyword{Start state}: the given initial arrangement
+        \item \keyword{Goal test}: tiles match the target arrangement
+      \end{itemize}
+      \begin{alertblock}{Why it matters}
+        \scriptsize $9! = 362{,}880$ reachable states — small enough to
+        benchmark BFS/DFS/UCS/A$^\ast$, large enough to reveal their differences.
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Case Study: Online Maze Search}{Abstracting a maze into a graph}
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      \begin{itemize}\small
+        \item \keyword{State space}: the agent's current cell in the maze
+        \item \keyword{Successor function}: legal moves (up/down/left/right) allowed by the walls
+        \item \keyword{Start state}: the agent's initial cell
+        \item \keyword{Goal test}: the agent reaches the target cell
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \begin{center}
+      \begin{tikzpicture}[node distance=0.5cm and 0.65cm,
+          st/.style={circle, draw=PrimaryMid, fill=PrimaryLight!45,
+            minimum size=0.55cm, font=\scriptsize}]
+        \node[st, fill=SuccessGreen!30, draw=SuccessGreen] (A) {A};
+        \node[st, right=of A] (B) {B};
+        \node[st, right=of B] (C) {C};
+        \node[st, below=of B] (E) {E};
+        \node[st, below=of E] (D) {D};
+        \node[st, below=of A] (K) {K};
+        \node[st, below=of K] (L) {L};
+        \node[st, fill=AlertRed!20, draw=AlertRed, right=of L] (G) {G};
+        \node[st, right=of G] (F) {F};
+        \draw[PrimaryMid] (A)--(B) (B)--(C) (B)--(E) (E)--(D) (A)--(K) (K)--(L) (L)--(G) (G)--(F) (D)--(F);
+      \end{tikzpicture}\\
+      \scriptsize Maze walls $\Rightarrow$ missing edges between adjacent cells
+      \end{center}
     \end{column}
   \end{columns}
 \end{frame}
@@ -448,20 +686,29 @@
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{center}
-      \begin{tikzpicture}[node distance=0.55cm and 0.9cm,
-          st/.style={circle, draw=PrimaryMid, fill=PrimaryLight!45,
-            minimum size=0.85cm, font=\scriptsize, align=center}]
+      \resizebox{\linewidth}{!}{%
+      \begin{tikzpicture}[node distance=0.5cm and 0.7cm,
+          st/.style={rounded corners=2pt, draw=PrimaryMid, fill=PrimaryLight!45,
+            minimum width=1.1cm, minimum height=0.85cm, font=\scriptsize, align=center}]
         \node[st, fill=AccentYellow!40, draw=AccentOrange] (s) {S\\h=6};
-        \node[st, below=of s] (a) {a\\h=5};
-        \node[st, below left=of a] (d) {d\\h=2};
-        \node[st, below right=of a] (e) {e\\h=1};
-        \node[st, fill=SuccessGreen!35, draw=SuccessGreen, below=1.4cm of a] (g) {G\\h=0};
-        \draw[-{Latex[length=1.6mm]},PrimaryMid] (s)--(a) node[midway,right,font=\scriptsize]{1};
-        \draw[-{Latex[length=1.6mm]},PrimaryMid] (a)--(d) node[midway,left,font=\scriptsize]{3};
-        \draw[-{Latex[length=1.6mm]},PrimaryMid] (a)--(e) node[midway,right,font=\scriptsize]{8};
-        \draw[-{Latex[length=1.6mm]},PrimaryMid] (d)--(g) node[midway,left,font=\scriptsize]{2};
-      \end{tikzpicture}\\
-      \scriptsize Follows smallest $h$: S $\to$ a $\to$ d $\to$ G
+        \node[st, right=of s] (a) {a\\h=5};
+        \node[st, right=of a] (e) {e\\h=1};
+        \node[st, right=of e] (d) {d\\h=2};
+        \node[st, fill=SuccessGreen!35, draw=SuccessGreen, right=of d] (g) {G\\h=0};
+        \node[st, below=1.1cm of a] (b) {b\\h=6};
+        \node[st, right=of b] (c) {c\\h=7};
+        \draw[-{Latex[length=1.6mm]},PrimaryMid] (s)--(a) node[midway,above,font=\scriptsize]{1};
+        \draw[-{Latex[length=1.6mm]},PrimaryMid] (a)--(e) node[midway,above,font=\scriptsize]{8};
+        \draw[-{Latex[length=1.6mm]},PrimaryMid] (e)--(d) node[midway,above,font=\scriptsize]{1};
+        \draw[-{Latex[length=1.6mm]},PrimaryMid] (d)--(g) node[midway,above,font=\scriptsize]{2};
+        \draw[-{Latex[length=1.6mm]},PrimaryMid] (a) to[bend left=35] node[midway,above,font=\scriptsize]{3} (d);
+        \draw[-{Latex[length=1.6mm]},PrimaryMid] (a)--(b) node[midway,left,font=\scriptsize]{1};
+        \draw[-{Latex[length=1.6mm]},PrimaryMid] (b)--(c) node[midway,above,font=\scriptsize]{1};
+      \end{tikzpicture}}\\
+      \scriptsize Two ways to reach \texttt{d}: direct edge (cost 3) or via \texttt{e} (cost $8{+}1{=}9$).
+      Greedy compares only $h$: $h(e){=}1 < h(d){=}2$, so it follows
+      S$\to$a$\to$e$\to$d$\to$G (total cost $12$) — \important{missing} the
+      cheaper S$\to$a$\to$d$\to$G (total cost $6$).
       \end{center}
     \end{column}
   \end{columns}
@@ -483,23 +730,44 @@
     \end{column}
     \begin{column}{0.48\textwidth}
       \begin{center}
-      \begin{tikzpicture}[node distance=0.55cm and 0.7cm,
-          st/.style={circle, draw=PrimaryMid, fill=PrimaryLight!45,
-            minimum size=0.95cm, font=\scriptsize, align=center}]
+      \resizebox{\linewidth}{!}{%
+      \begin{tikzpicture}[node distance=0.5cm and 0.7cm,
+          st/.style={rounded corners=2pt, draw=PrimaryMid, fill=PrimaryLight!45,
+            minimum width=1.1cm, minimum height=0.85cm, font=\scriptsize, align=center}]
         \node[st, fill=AccentYellow!40, draw=AccentOrange] (s) {S\\0+6};
-        \node[st, below=of s] (a) {a\\1+5};
-        \node[st, below left=of a] (d) {d\\4+2};
-        \node[st, below right=of a] (e) {e\\9+1};
-        \node[st, fill=SuccessGreen!35, draw=SuccessGreen, below=1.5cm of a] (g) {G\\6+0};
-        \draw[-{Latex[length=1.6mm]},PrimaryMid] (s)--(a);
-        \draw[-{Latex[length=1.6mm]},PrimaryMid] (a)--(d);
-        \draw[-{Latex[length=1.6mm]},PrimaryMid] (a)--(e);
-        \draw[-{Latex[length=1.6mm]},PrimaryMid] (d)--(g);
-      \end{tikzpicture}\\
-      \scriptsize Optimal path S$\to$a$\to$d$\to$G, $f=6$
+        \node[st, right=of s] (a) {a\\1+5};
+        \node[st, right=of a] (e) {e\\9+1};
+        \node[st, right=of e] (d) {d\\4+2};
+        \node[st, fill=SuccessGreen!35, draw=SuccessGreen, right=of d] (g) {G\\6+0};
+        \node[st, below=1.1cm of a] (b) {b\\2+6};
+        \node[st, right=of b] (c) {c\\3+7};
+        \draw[-{Latex[length=1.6mm]},PrimaryMid] (s)--(a) node[midway,above,font=\scriptsize]{1};
+        \draw[-{Latex[length=1.6mm]},PrimaryMid] (a)--(e) node[midway,above,font=\scriptsize]{8};
+        \draw[-{Latex[length=1.6mm]},PrimaryMid] (e)--(d) node[midway,above,font=\scriptsize]{1};
+        \draw[-{Latex[length=1.6mm]},PrimaryMid] (d)--(g) node[midway,above,font=\scriptsize]{2};
+        \draw[-{Latex[length=1.6mm]},PrimaryMid] (a) to[bend left=35] node[midway,above,font=\scriptsize]{3} (d);
+        \draw[-{Latex[length=1.6mm]},PrimaryMid] (a)--(b) node[midway,left,font=\scriptsize]{1};
+        \draw[-{Latex[length=1.6mm]},PrimaryMid] (b)--(c) node[midway,above,font=\scriptsize]{1};
+      \end{tikzpicture}}\\
+      \scriptsize Same graph as Greedy: $f(d){=}4{+}2{=}6 < f(e){=}9{+}1{=}10$, so
+      A$^\ast$ expands \texttt{d} directly and returns S$\to$a$\to$d$\to$G
+      (cost $6$) — the shortcut that greedy \important{missed}.
       \end{center}
     \end{column}
   \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{A$^\ast$ Search}{Combining Uniform-Cost and Greedy Best-First}
+\begin{lstlisting}[language={}, basicstyle=\ttfamily\scriptsize, numbers=none,
+                   xleftmargin=0.5em, framexleftmargin=0.5em]
+... choose the node j according to f(j):
+  f(j) = min{ c(j) }          // Uniform-Cost Search
+  f(j) = min{ h(j) }          // Greedy Best-First Search
+  f(j) = min{ c(j) + h(j) }   // A* Search
+\end{lstlisting}
+\centering\scriptsize
+Same \texttt{GenericSearch} skeleton (LIST, VISIT, pred) — only the
+priority function $f(j)$ changes between UCS, Greedy, and A$^\ast$.
 \end{frame}
 
 \begin{frame}{Why A$^\ast$ is Optimal}{Admissibility guarantees optimality}
@@ -616,6 +884,23 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}[fragile]{Hill Climbing}{Pseudocode}
+\begin{lstlisting}[language={}, basicstyle=\ttfamily\scriptsize, numbers=none,
+                   xleftmargin=0.5em, framexleftmargin=0.5em]
+Algorithm HillClimb(Initial State: s, Loss function: L)
+begin
+  CURRENT = { s };
+  repeat
+    Scan neighbors of CURRENT until all scanned, or a state
+      NEXT is found with lower loss than CURRENT;
+    if NEXT found with lower loss than CURRENT:
+      CURRENT = NEXT;
+  until no improvement in previous iteration;
+  return CURRENT;
+end
+\end{lstlisting}
+\end{frame}
+
 \begin{frame}{Simulated Annealing}{Accept some bad moves to escape optima}
   \begin{columns}[T]
     \begin{column}{0.55\textwidth}
@@ -642,6 +927,25 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}[fragile]{Simulated Annealing}{Pseudocode}
+\begin{lstlisting}[language={}, basicstyle=\ttfamily\scriptsize, numbers=none,
+                   xleftmargin=0.5em, framexleftmargin=0.5em]
+Algorithm SimulatedAnnealing(Initial State: s, Loss function: L)
+begin
+  CURRENT = { s };  BEST = { s };  t = 1;
+  T = T0;                     // ~ typical loss difference between neighbors
+  repeat
+    NEXT = a random neighbor of CURRENT;
+    dL = L(NEXT) - L(CURRENT);
+    CURRENT = NEXT with probability min(1, exp(-dL / T));
+    if L(CURRENT) < L(BEST): BEST = CURRENT;
+    t = t + 1;  T = T0 / log(t + 1);
+  until no improvement in BEST for N iterations;
+  return BEST;
+end
+\end{lstlisting}
+\end{frame}
+
 \begin{frame}{Tabu Search}{Memory to avoid cycling}
   \begin{columns}[T]
     \begin{column}{0.55\textwidth}
@@ -661,6 +965,39 @@
       \centering\scriptsize Needs tuning of the tabu-list size.
     \end{column}
   \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Tabu Search}{Pseudocode}
+\begin{lstlisting}[language={}, basicstyle=\ttfamily\tiny, numbers=none,
+                   xleftmargin=0.5em, framexleftmargin=0.5em]
+Algorithm TabuSearch(Initial State: s, Loss function: L)
+begin
+  CURRENT = { s };  VISIT = {};   // VISIT is the tabu list
+  repeat
+    Add CURRENT to VISIT;
+    if all neighbors of CURRENT are in VISIT: RANDOM = null;
+    else RANDOM = a random neighbor not in VISIT;
+    Scan neighbors of CURRENT for a NOT-in-VISIT state NEXT
+      with lower loss than CURRENT;
+    if such NEXT found: CURRENT = NEXT;
+    else if RANDOM != null: CURRENT = RANDOM;
+  until RANDOM == null;
+  return CURRENT;
+end
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Tabu Search — Practical Enhancements}{Beyond the basic version}
+  \begin{itemize}\small
+    \item Prefer the \keyword{best} unvisited improving neighbor, not just any improving one
+    \item \keyword{Tabu-list size}: cap recent moves; drop the oldest entry once full
+    \item \keyword{Aspiration criteria}: allow a tabu move if it beats the best solution found so far
+    \item \keyword{Intensification} vs.\ \keyword{diversification}: focus on promising regions,
+      or push into unexplored ones
+  \end{itemize}
+  \begin{exampleblock}{Good fit}
+    \small Combinatorial optimization: TSP, job scheduling, vehicle routing.
+  \end{exampleblock}
 \end{frame}
 
 \begin{frame}{Local Search: Comparison}{}
@@ -724,6 +1061,139 @@
     \keyword{TSP example:} chromosome = city permutation; fitness = $-$tour length;
     order crossover; swap mutation.
   \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Genetic Algorithm}{Pseudocode: select, crossover, mutate, repeat}
+\begin{lstlisting}[language={}, basicstyle=\ttfamily\scriptsize, numbers=none,
+                   xleftmargin=0.5em, framexleftmargin=0.5em]
+Algorithm GeneticAlgorithm(Initial Population: P, Loss function: L)
+begin
+  t = 1;
+  repeat
+    P = Select(P);      // fitter chromosomes survive, using L
+    P = Crossover(P);    // some pairs stay unchanged
+    P = Mutate(P);       // controlled by a mutation rate
+    t = t + 1;
+  until convergence condition is met;
+  return P;
+end
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Selection Techniques}{Choosing parents for the next generation}
+  \small
+  \renewcommand{\arraystretch}{1.25}
+  \begin{center}
+  \begin{tabularx}{\textwidth}{@{}>{\bfseries}l >{\raggedright\arraybackslash}X@{}}
+    \toprule
+    \rowcolor{PrimaryDark}
+    \textcolor{white}{Method} & \textcolor{white}{How it works} \\
+    \midrule
+    Roulette-wheel & $P(\text{pick } i) = f_i \big/ \sum_j f_j$ — each individual gets a slice
+      proportional to its fitness \\
+    \rowcolor{PrimaryLight!25}
+    Rank selection & Sort the population by fitness; selection probability depends on
+      \keyword{rank}, not raw value — resists domination by one outlier \\
+    Tournament & Draw $k$ random individuals, keep the fittest; repeat to fill the mating pool \\
+    \rowcolor{PrimaryLight!25}
+    Elitism & Copy the top $e$ individuals unchanged into the next generation — best fitness
+      never decreases \\
+    \bottomrule
+  \end{tabularx}
+  \end{center}
+  \begin{center}\scriptsize
+    \important{Trade-off:} strong selection pressure $\Rightarrow$ fast convergence, but risks
+    \keyword{premature convergence} to a local optimum.
+  \end{center}
+\end{frame}
+
+\begin{frame}{Crossover Techniques}{Recombining parent chromosomes}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{exampleblock}{For bit / value strings}
+        \small
+        \begin{itemize}
+          \item \keyword{Single-point}: cut at one locus, swap the tails
+          \item \keyword{Two-point}: swap the middle segment between two cuts
+          \item \keyword{Uniform}: each gene copied from either parent with prob.\ $0.5$
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{alertblock}{For permutations (e.g.\ TSP tours)}
+        \small
+        \begin{itemize}
+          \item \keyword{Order Crossover (OX)}: copy a slice from parent 1, fill the rest in
+            parent-2 order, skipping duplicates
+          \item \keyword{Partially Mapped (PMX)}: swap a slice, repair conflicts via a mapping
+          \item \keyword{Cycle Crossover (CX)}: preserves each city's absolute position via
+            position cycles
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+  \vspace{0.3em}
+  \centering\scriptsize
+  \important{Why not plain single-point on a tour?} Naively swapping segments creates
+  \keyword{invalid tours} with repeated / missing cities — permutation-safe operators (OX, PMX, CX)
+  are required.
+\end{frame}
+
+\begin{frame}{Mutation Techniques}{Injecting diversity, escaping premature convergence}
+  \small
+  \renewcommand{\arraystretch}{1.25}
+  \begin{center}
+  \begin{tabularx}{\textwidth}{@{}>{\bfseries}l >{\raggedright\arraybackslash}X@{}}
+    \toprule
+    \rowcolor{PrimaryDark}
+    \textcolor{white}{Method} & \textcolor{white}{How it works} \\
+    \midrule
+    Bit-flip & Flip a random $0\leftrightarrow1$ bit (binary-encoded chromosomes) \\
+    \rowcolor{PrimaryLight!25}
+    Swap & Exchange the genes at two randomly chosen positions — safe for permutations \\
+    Scramble & Randomly shuffle a contiguous sub-segment of the chromosome \\
+    \rowcolor{PrimaryLight!25}
+    Inversion & Reverse the order of a random sub-segment — a common TSP mutation \\
+    \bottomrule
+  \end{tabularx}
+  \end{center}
+  \begin{center}\scriptsize
+    \keyword{Mutation rate} is usually small ($<5\%$ per gene) — too high turns the search
+    into random sampling; too low loses diversity and invites premature convergence.
+  \end{center}
+\end{frame}
+
+\begin{frame}{Case Study: Genetic Algorithm for TSP}{Encoding, fitness, and operator choice}
+  \begin{block}{Encoding}
+    \small \keyword{Chromosome} = a permutation of city indices, e.g.\ $[3,1,4,2,5]$ represents
+    the tour $3\to1\to4\to2\to5\to3$ (return to the start).
+  \end{block}
+  \begin{exampleblock}{Fitness}
+    \small $\text{fitness} = 1 / \text{tour length}$ — shorter tours score higher, so the
+    fittest chromosomes are the shortest routes.
+  \end{exampleblock}
+  \begin{alertblock}{Operators used}
+    \small \keyword{Selection}: tournament \quad \keyword{Crossover}: order crossover (OX)
+    \quad \keyword{Mutation}: swap or inversion — all three respect the permutation constraint.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{TSP: Order Crossover (OX) — Worked Example}{Producing a valid child tour}
+\begin{lstlisting}[language={}, basicstyle=\ttfamily\scriptsize, numbers=none,
+                   xleftmargin=0.5em, framexleftmargin=0.5em]
+Parent A: 1 2 | 3 4 5 | 6 7 8     (keep the boxed segment unchanged)
+Parent B: 3 7 | 5 1 6 | 8 2 4
+
+Child:    . . | 3 4 5 | . . .
+
+Fill the remaining slots in Parent B's order, skipping 3, 4, 5:
+  Parent B from the cut point: 8 2 4 3 7 5 1 6  ->  8 2 4 7 1 6
+
+Child:    8 2 | 3 4 5 | 7 1 6     (every city appears exactly once)
+\end{lstlisting}
+\centering\scriptsize
+A later \keyword{swap mutation} might exchange positions 1 and 6:
+\texttt{8 2 3 4 5 7 1 6} $\to$ \texttt{1 2 3 4 5 7 8 6}
 \end{frame}
 
 % ============================================================
